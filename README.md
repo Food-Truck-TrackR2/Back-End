@@ -10,11 +10,22 @@ Registration enpoints
 POST /api/diner-auth/register"
 POST /api/op-auth/register"
 
+schema{
+"username": a string,
+"password" : a string
+}
+
 Login Endpoints
 **\*** the following endpoints are to log in as either an operator or diner **\***
 
 POST /api/diner-auth/login"
 POST /api/op-auth/login"
+
+schema{
+"username": a string,
+"password" : a string
+}
+
 Operator Endpoints
 GET /api/ops": this endpoint lets you retrieve the list of operators in the database
 GET /api/ops/:id": this endpoint lets you retrieve a specific operator in the database
@@ -60,6 +71,10 @@ GET /api/menus": this endpoint lets you retrieve a list of all menu items from t
 GET /api/menus/:id": this endpoint lets you retrieve a specific menu item from the menu database
 PUT /api/menus/:id": this endpoint lets you update any menu item from the menu database
 
-SCHEMA: { menuName: a string , menuDesc: a string, menuPhoto: a string (can be url or image file), menuPrice: an integer, customerRatingAvg: an integer }
+SCHEMA: {
+menuName: a string ,
+menuDesc: a string,
+menuPhoto: a string (can be url or image file), menuPrice: an integer, customerRatingAvg: an integer
+}
 
 DELETE /api/menus/:id": this endpoint lets you delete any menu item from the database
