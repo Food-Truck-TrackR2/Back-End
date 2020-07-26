@@ -41,7 +41,7 @@ describe("Register", () => {
 
 describe("Register", () => {
   it("returns 404 if username already exists", async () => {
-    const data = { username: "david", password: "pass", role: "diner" };
+    const data = { username: "david", password: "pass" };
     const res = await supertest(server)
       .post("/api/dinner-auth/register")
       .send(data);
@@ -151,6 +151,10 @@ describe("adds truck", () => {
       )
       .then((res) => expect(res.status).toBe(201));
   });
+  it("returns a JSON object", async () => {
+    const res = await supertest(server).post("/api/ops/1/trucks");
+    expect(res.type).toBe("application/json");
+  });
 });
 describe("adds menu", () => {
   it("returns 201, adds menu", async () => {
@@ -170,7 +174,12 @@ describe("adds menu", () => {
       )
       .then((res) => expect(res.status).toBe(201));
   });
+  it("returns a JSON object", async () => {
+    const res = await supertest(server).post("/api/trucks/1/menu");
+    expect(res.type).toBe("application/json");
+  });
 });
+
 // get tests
 describe("Get operator", () => {
   // it("returns operators", async () => {
@@ -345,7 +354,7 @@ describe("delete diner", () => {
     expect(res.statusCode).toBe(200);
   });
   it("returns a JSON object", async () => {
-    const res = await supertest(server).put("/api/diners/4");
+    const res = await supertest(server).delete("/api/diners/4");
     expect(res.type).toBe("application/json");
   });
 });
@@ -355,7 +364,7 @@ describe("delete truck", () => {
     expect(res.statusCode).toBe(200);
   });
   it("returns a JSON object", async () => {
-    const res = await supertest(server).put("/api/trucks/7");
+    const res = await supertest(server).delete("/api/trucks/7");
     expect(res.type).toBe("application/json");
   });
 });
@@ -365,7 +374,7 @@ describe("delete menu", () => {
     expect(res.statusCode).toBe(200);
   });
   it("returns a JSON object", async () => {
-    const res = await supertest(server).put("/api/menus/18");
+    const res = await supertest(server).delete("/api/menus/18");
     expect(res.type).toBe("application/json");
   });
 });
