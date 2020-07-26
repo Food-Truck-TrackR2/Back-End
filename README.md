@@ -47,7 +47,11 @@ GET /api/trucks/:id": this endpoint lets you retrieve a specific truck from the 
 GET /api/trucks/:id/menu": this endpoint lets you retrieve a list of menu items that belong to a truck
 POST /api/trucks/:id/menu": this endpoint lets you post a menu item for that specific food truck
 
-SCHEMA: { menuName: a string , menuDesc: a string, menuPhoto: a string (can be url or image file), menuPrice: an integer, customerRatingAvg: an integer }
+SCHEMA: {
+menuName: a string ,
+menuDesc: a string,
+menuPhoto: a string (can be url or image file), menuPrice: an integer, customerRatingAvg: an integer
+}
 
 PUT /api/trucks/:id": this endpoint lets you update information on any truck
 DELETE /api/trucks/:id": this endpoint lets you delete a truck

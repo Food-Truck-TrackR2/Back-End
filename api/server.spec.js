@@ -145,9 +145,10 @@ describe("returns all trucks", () => {
       )
       .then((res) => expect(res.status).toBe(200));
   });
+  // post test
   it("returns 201, post created", async () => {
     await supertest(server)
-      .post("/api/ops/:id/trucks")
+      .post("/api/ops/1/trucks")
       .send({
         truckName: "Jr's Subs",
         imgOfTruck:
@@ -161,5 +162,113 @@ describe("returns all trucks", () => {
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU3MjY1NTgsImV4cCI6MTU5NTgxMjk1OH0.DpjxDdbQwBasiR4sf8tWL8Zxo6R6h1W8nEimQnZCVgs"
       )
       .then((res) => expect(res.status).toBe(201));
+  });
+  it("returns 201, post created", async () => {
+    await supertest(server)
+      .post("/api/trucks/1/menu")
+      .send({
+        menuName: "Chicken Cheese Steak",
+        menuDesc: "chicken, cheese, onions, peppers, mushrooms",
+        menuPhoto:
+          "https://66.media.tumblr.com/40cbbf249ed007af5898c526732dbc7c/tumblr_p2vposCTFZ1ufzelwo1_1280.png",
+        menuPrice: 7,
+        customerRatingAvg: 3,
+      })
+      .set(
+        "Authorization",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU3MjY1NTgsImV4cCI6MTU5NTgxMjk1OH0.DpjxDdbQwBasiR4sf8tWL8Zxo6R6h1W8nEimQnZCVgs"
+      )
+      .then((res) => expect(res.status).toBe(201));
+  });
+});
+// get tests
+describe("Get operator", () => {
+  it("returns operators", async () => {
+    const res = await supertest(server).get("/api/ops");
+    expect(res.statusCode).toBe(200);
+  });
+  it("returns a JSON object", async () => {
+    const res = await supertest(server).get("/api/ops");
+    expect(res.type).toBe("application/json");
+  });
+});
+describe("Get operator by id", () => {
+  it("returns operator", async () => {
+    const res = await supertest(server).get("/api/ops/1");
+    expect(res.statusCode).toBe(200);
+  });
+  it("returns a JSON object", async () => {
+    const res = await supertest(server).get("/api/ops/1");
+    expect(res.type).toBe("application/json");
+  });
+});
+describe("Get diners", () => {
+  it("returns diners", async () => {
+    const res = await supertest(server).get("/api/diners");
+    expect(res.statusCode).toBe(200);
+  });
+  it("returns a JSON object", async () => {
+    const res = await supertest(server).get("/api/diners");
+    expect(res.type).toBe("application/json");
+  });
+});
+describe("Get diner", () => {
+  it("returns diner", async () => {
+    const res = await supertest(server).get("/api/diners/1");
+    expect(res.statusCode).toBe(200);
+  });
+  it("returns a JSON object", async () => {
+    const res = await supertest(server).get("/api/diners/1");
+    expect(res.type).toBe("application/json");
+  });
+});
+describe("Get trucks", () => {
+  it("returns trucks", async () => {
+    const res = await supertest(server).get("/api/trucks");
+    expect(res.statusCode).toBe(200);
+  });
+  it("returns a JSON object", async () => {
+    const res = await supertest(server).get("/api/trucks");
+    expect(res.type).toBe("application/json");
+  });
+});
+describe("Get truck", () => {
+  it("returns truck", async () => {
+    const res = await supertest(server).get("/api/trucks/1");
+    expect(res.statusCode).toBe(200);
+  });
+  it("returns a JSON object", async () => {
+    const res = await supertest(server).get("/api/trucks/1");
+    expect(res.type).toBe("application/json");
+  });
+});
+describe("Get truck menu", () => {
+  it("returns truck menu", async () => {
+    const res = await supertest(server).get("/api/trucks/1/menu");
+    expect(res.statusCode).toBe(200);
+  });
+  it("returns a JSON object", async () => {
+    const res = await supertest(server).get("/api/trucks/1/menu");
+    expect(res.type).toBe("application/json");
+  });
+});
+describe("Get  menu", () => {
+  it("returns  menu", async () => {
+    const res = await supertest(server).get("/api/menus");
+    expect(res.statusCode).toBe(200);
+  });
+  it("returns a JSON object", async () => {
+    const res = await supertest(server).get("/api/menus");
+    expect(res.type).toBe("application/json");
+  });
+});
+describe("Get  menu by id", () => {
+  it("returns  menu", async () => {
+    const res = await supertest(server).get("/api/menus/1");
+    expect(res.statusCode).toBe(200);
+  });
+  it("returns a JSON object", async () => {
+    const res = await supertest(server).get("/api/menus/1");
+    expect(res.type).toBe("application/json");
   });
 });
