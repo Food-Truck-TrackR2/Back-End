@@ -120,21 +120,7 @@ describe("Login", () => {
     expect(res.type).toBe("application/json");
   });
 });
-describe("delete operator", () => {
-  it("deletes operator", async () => {
-    const res = await supertest(server).delete("/api/ops/2");
-    expect(res.statusCode).toBe(200);
-  });
 
-  it("should return JSON"),
-    async () => {
-      await supertest(server)
-        .post("/api/ops")
-        .send({ username: "david", password: "pass" });
-      const res = await supertest(server).delete("/api/ops/2");
-      expect(res.type).toMatch("application/json");
-    };
-});
 describe("returns all trucks", () => {
   it("returns trucks", async () => {
     await supertest(server)
@@ -145,7 +131,9 @@ describe("returns all trucks", () => {
       )
       .then((res) => expect(res.status).toBe(200));
   });
-  // post test
+});
+// post test
+describe("adds truck", () => {
   it("returns 201, post created", async () => {
     await supertest(server)
       .post("/api/ops/1/trucks")
@@ -159,11 +147,13 @@ describe("returns all trucks", () => {
       })
       .set(
         "Authorization",
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU3MjY1NTgsImV4cCI6MTU5NTgxMjk1OH0.DpjxDdbQwBasiR4sf8tWL8Zxo6R6h1W8nEimQnZCVgs"
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU3ODMwNDYsImV4cCI6MTU5NTg2OTQ0Nn0.Z3TXKhuzliLDJUsbzJloZqOdzJXDvHLSLAOQq5PWKKY"
       )
       .then((res) => expect(res.status).toBe(201));
   });
-  it("returns 201, post created", async () => {
+});
+describe("adds menu", () => {
+  it("returns 201, adds menu", async () => {
     await supertest(server)
       .post("/api/trucks/1/menu")
       .send({
@@ -176,7 +166,7 @@ describe("returns all trucks", () => {
       })
       .set(
         "Authorization",
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU3MjY1NTgsImV4cCI6MTU5NTgxMjk1OH0.DpjxDdbQwBasiR4sf8tWL8Zxo6R6h1W8nEimQnZCVgs"
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU3ODMwNDYsImV4cCI6MTU5NTg2OTQ0Nn0.Z3TXKhuzliLDJUsbzJloZqOdzJXDvHLSLAOQq5PWKKY"
       )
       .then((res) => expect(res.status).toBe(201));
   });
@@ -269,6 +259,113 @@ describe("Get  menu by id", () => {
   // });
   it("returns a JSON object", async () => {
     const res = await supertest(server).get("/api/menus/1");
+    expect(res.type).toBe("application/json");
+  });
+});
+// puts
+describe("edits truck", () => {
+  it("returns 201, edits truck", async () => {
+    await supertest(server)
+      .put("/api/trucks/1")
+      .send({
+        truckName: "Jr's Super Subs",
+        imgOfTruck:
+          "https://i.pinimg.com/originals/0d/a0/8e/0da08ef303a123ae388ab9913313775e.jpg",
+        customerRatingAvg: 5,
+        currentLocation: "4321 Avenue Ln",
+        departTime: "04/20/2021 4:20 AM",
+      })
+      .set(
+        "Authorization",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU3ODMwNDYsImV4cCI6MTU5NTg2OTQ0Nn0.Z3TXKhuzliLDJUsbzJloZqOdzJXDvHLSLAOQq5PWKKY"
+      )
+      .then((res) => expect(res.status).toBe(201));
+  });
+  it("returns a JSON object", async () => {
+    const res = await supertest(server).put("/api/trucks/1");
+    expect(res.type).toBe("application/json");
+  });
+});
+describe("adds menu", () => {
+  it("returns 201, adds menu", async () => {
+    await supertest(server)
+      .put("/api/menus/1")
+      .send({
+        menuName: "Super Chicken Cheese Steak",
+        menuDesc: "chicken, cheese, onions, peppers, mushrooms, soft sub roll",
+        menuPhoto:
+          "https://66.media.tumblr.com/40cbbf249ed007af5898c526732dbc7c/tumblr_p2vposCTFZ1ufzelwo1_1280.png",
+        menuPrice: 7,
+        customerRatingAvg: 3,
+      })
+      .set(
+        "Authorization",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU3ODMwNDYsImV4cCI6MTU5NTg2OTQ0Nn0.Z3TXKhuzliLDJUsbzJloZqOdzJXDvHLSLAOQq5PWKKY"
+      )
+      .then((res) => expect(res.status).toBe(201));
+  });
+  it("returns a JSON object", async () => {
+    const res = await supertest(server).get("/api/menus/1");
+    expect(res.type).toBe("application/json");
+  });
+});
+describe("update operators login", () => {
+  it("returns 201, edits login", async () => {
+    await supertest(server)
+      .put("/api/ops/1")
+      .send({
+        username: "tommy",
+        password: "pass",
+      })
+      .set(
+        "Authorization",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU3ODMwNDYsImV4cCI6MTU5NTg2OTQ0Nn0.Z3TXKhuzliLDJUsbzJloZqOdzJXDvHLSLAOQq5PWKKY"
+      )
+      .then((res) => expect(res.status).toBe(201));
+  });
+  it("returns a JSON object", async () => {
+    const res = await supertest(server).put("/api/ops/1");
+    expect(res.type).toBe("application/json");
+  });
+});
+// deletes
+describe("delete operator", () => {
+  it("deletes operator", async () => {
+    const res = await supertest(server).delete("/api/ops/1");
+    expect(res.statusCode).toBe(200);
+  });
+  it("returns a JSON object", async () => {
+    const res = await supertest(server).put("/api/ops/1");
+    expect(res.type).toBe("application/json");
+  });
+});
+describe("delete diner", () => {
+  it("deletes diner", async () => {
+    const res = await supertest(server).delete("/api/diners/4");
+    expect(res.statusCode).toBe(200);
+  });
+  it("returns a JSON object", async () => {
+    const res = await supertest(server).put("/api/diners/4");
+    expect(res.type).toBe("application/json");
+  });
+});
+describe("delete truck", () => {
+  it("deletes truck", async () => {
+    const res = await supertest(server).delete("/api/trucks/7");
+    expect(res.statusCode).toBe(200);
+  });
+  it("returns a JSON object", async () => {
+    const res = await supertest(server).put("/api/trucks/7");
+    expect(res.type).toBe("application/json");
+  });
+});
+describe("delete menu", () => {
+  it("deletes menu", async () => {
+    const res = await supertest(server).delete("/api/menus/18");
+    expect(res.statusCode).toBe(200);
+  });
+  it("returns a JSON object", async () => {
+    const res = await supertest(server).put("/api/menus/18");
     expect(res.type).toBe("application/json");
   });
 });
