@@ -127,7 +127,7 @@ describe("returns all trucks", () => {
       .get("/api/trucks")
       .set(
         "Authorization",
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU3NzU4MjAsImV4cCI6MTU5NTg2MjIyMH0.zD2yqOpLUmQWEAFmdE8-0atZKvGHMzCAbYqJBchrm7k"
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU4NzA1MzAsImV4cCI6MTU5NTk1NjkzMH0.WRWUirGed2zNk-49tsf9Ar3wERDjgihOCJvhddCtQuI"
       )
       .then((res) => expect(res.status).toBe(200));
   });
@@ -147,7 +147,7 @@ describe("adds truck", () => {
       })
       .set(
         "Authorization",
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU3ODMwNDYsImV4cCI6MTU5NTg2OTQ0Nn0.Z3TXKhuzliLDJUsbzJloZqOdzJXDvHLSLAOQq5PWKKY"
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU4NzA1MzAsImV4cCI6MTU5NTk1NjkzMH0.WRWUirGed2zNk-49tsf9Ar3wERDjgihOCJvhddCtQuI"
       )
       .then((res) => expect(res.status).toBe(201));
   });
@@ -170,7 +170,7 @@ describe("adds menu", () => {
       })
       .set(
         "Authorization",
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU3ODMwNDYsImV4cCI6MTU5NTg2OTQ0Nn0.Z3TXKhuzliLDJUsbzJloZqOdzJXDvHLSLAOQq5PWKKY"
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU4NzA1MzAsImV4cCI6MTU5NTk1NjkzMH0.WRWUirGed2zNk-49tsf9Ar3wERDjgihOCJvhddCtQuI"
       )
       .then((res) => expect(res.status).toBe(201));
   });
@@ -182,10 +182,15 @@ describe("adds menu", () => {
 
 // get tests
 describe("Get operator", () => {
-  // it("returns operators", async () => {
-  //   const res = await supertest(server).get("/api/ops");
-  //   expect(res.statusCode).toBe(200);
-  // });
+  it("returns operators", async () => {
+    const res = await supertest(server)
+      .get("/api/ops")
+      .set(
+        "Authorization",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU4NzA1MzAsImV4cCI6MTU5NTk1NjkzMH0.WRWUirGed2zNk-49tsf9Ar3wERDjgihOCJvhddCtQuI"
+      );
+    expect(res.statusCode).toBe(200);
+  });
 
   it("returns a JSON object", async () => {
     const res = await supertest(server).get("/api/ops");
@@ -193,80 +198,121 @@ describe("Get operator", () => {
   });
 });
 describe("Get operator by id", () => {
-  // it("returns operator", async () => {
-  //   const res = await supertest(server).get("/api/ops/1");
-  //   expect(res.statusCode).toBe(200);
-  // });
+  it("returns operator", async () => {
+    const res = await supertest(server)
+      .get("/api/ops/1")
+      .set(
+        "Authorization",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU4NzA1MzAsImV4cCI6MTU5NTk1NjkzMH0.WRWUirGed2zNk-49tsf9Ar3wERDjgihOCJvhddCtQuI"
+      );
+
+    expect(res.statusCode).toBe(200);
+  });
   it("returns a JSON object", async () => {
     const res = await supertest(server).get("/api/ops/1");
     expect(res.type).toBe("application/json");
   });
 });
 describe("Get diners", () => {
-  // it("returns diners", async () => {
-  //   const res = await supertest(server).get("/api/diners");
-  //   expect(res.statusCode).toBe(200);
-  // });
+  it("returns diners", async () => {
+    const res = await supertest(server)
+      .get("/api/diners")
+      .set(
+        "Authorization",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU4NzA1MzAsImV4cCI6MTU5NTk1NjkzMH0.WRWUirGed2zNk-49tsf9Ar3wERDjgihOCJvhddCtQuI"
+      );
+    expect(res.statusCode).toBe(200);
+  });
   it("returns a JSON object", async () => {
     const res = await supertest(server).get("/api/diners");
     expect(res.type).toBe("application/json");
   });
 });
 describe("Get diner", () => {
-  // it("returns diner", async () => {
-  //   const res = await supertest(server).get("/api/diners/1");
-  //   expect(res.statusCode).toBe(200);
-  // });
+  it("returns diner", async () => {
+    const res = await supertest(server)
+      .get("/api/diners/1")
+      .set(
+        "Authorization",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU4NzA1MzAsImV4cCI6MTU5NTk1NjkzMH0.WRWUirGed2zNk-49tsf9Ar3wERDjgihOCJvhddCtQuI"
+      );
+    expect(res.statusCode).toBe(200);
+  });
   it("returns a JSON object", async () => {
     const res = await supertest(server).get("/api/diners/1");
     expect(res.type).toBe("application/json");
   });
 });
 describe("Get trucks", () => {
-  // it("returns trucks", async () => {
-  //   const res = await supertest(server).get("/api/trucks");
-  //   expect(res.statusCode).toBe(200);
-  // });
+  it("returns trucks", async () => {
+    const res = await supertest(server)
+      .get("/api/trucks")
+      .set(
+        "Authorization",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU4NzA1MzAsImV4cCI6MTU5NTk1NjkzMH0.WRWUirGed2zNk-49tsf9Ar3wERDjgihOCJvhddCtQuI"
+      );
+    expect(res.statusCode).toBe(200);
+  });
   it("returns a JSON object", async () => {
     const res = await supertest(server).get("/api/trucks");
     expect(res.type).toBe("application/json");
   });
 });
 describe("Get truck", () => {
-  // it("returns truck", async () => {
-  //   const res = await supertest(server).get("/api/trucks/1");
-  //   expect(res.statusCode).toBe(200);
-  // });
+  it("returns truck", async () => {
+    const res = await supertest(server)
+      .get("/api/trucks/1")
+      .set(
+        "Authorization",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU4NzA1MzAsImV4cCI6MTU5NTk1NjkzMH0.WRWUirGed2zNk-49tsf9Ar3wERDjgihOCJvhddCtQuI"
+      );
+    expect(res.statusCode).toBe(200);
+  });
   it("returns a JSON object", async () => {
     const res = await supertest(server).get("/api/trucks/1");
     expect(res.type).toBe("application/json");
   });
 });
 describe("Get truck menu", () => {
-  // it("returns truck menu", async () => {
-  //   const res = await supertest(server).get("/api/trucks/1/menu");
-  //   expect(res.statusCode).toBe(200);
-  // });
+  it("returns truck menu", async () => {
+    const res = await supertest(server)
+      .get("/api/trucks/1/menu")
+      .set(
+        "Authorization",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU4NzA1MzAsImV4cCI6MTU5NTk1NjkzMH0.WRWUirGed2zNk-49tsf9Ar3wERDjgihOCJvhddCtQuI"
+      );
+    expect(res.statusCode).toBe(200);
+  });
   it("returns a JSON object", async () => {
     const res = await supertest(server).get("/api/trucks/1/menu");
     expect(res.type).toBe("application/json");
   });
 });
 describe("Get  menu", () => {
-  // it("returns  menu", async () => {
-  //   const res = await supertest(server).get("/api/menus");
-  //   expect(res.statusCode).toBe(200);
-  // });
+  it("returns  menu", async () => {
+    const res = await supertest(server)
+      .get("/api/menus")
+      .set(
+        "Authorization",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU4NzA1MzAsImV4cCI6MTU5NTk1NjkzMH0.WRWUirGed2zNk-49tsf9Ar3wERDjgihOCJvhddCtQuI"
+      );
+    expect(res.statusCode).toBe(200);
+  });
   it("returns a JSON object", async () => {
     const res = await supertest(server).get("/api/menus");
     expect(res.type).toBe("application/json");
   });
 });
 describe("Get  menu by id", () => {
-  // it("returns  menu", async () => {
-  //   const res = await supertest(server).get("/api/menus/1");
-  //   expect(res.statusCode).toBe(200);
-  // });
+  it("returns  menu", async () => {
+    const res = await supertest(server)
+      .get("/api/menus/1")
+      .set(
+        "Authorization",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU4NzA1MzAsImV4cCI6MTU5NTk1NjkzMH0.WRWUirGed2zNk-49tsf9Ar3wERDjgihOCJvhddCtQuI"
+      );
+    expect(res.statusCode).toBe(200);
+  });
   it("returns a JSON object", async () => {
     const res = await supertest(server).get("/api/menus/1");
     expect(res.type).toBe("application/json");
@@ -287,7 +333,7 @@ describe("edits truck", () => {
       })
       .set(
         "Authorization",
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU3ODMwNDYsImV4cCI6MTU5NTg2OTQ0Nn0.Z3TXKhuzliLDJUsbzJloZqOdzJXDvHLSLAOQq5PWKKY"
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU4NzA1MzAsImV4cCI6MTU5NTk1NjkzMH0.WRWUirGed2zNk-49tsf9Ar3wERDjgihOCJvhddCtQuI"
       )
       .then((res) => expect(res.status).toBe(201));
   });
@@ -310,7 +356,7 @@ describe("adds menu", () => {
       })
       .set(
         "Authorization",
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU3ODMwNDYsImV4cCI6MTU5NTg2OTQ0Nn0.Z3TXKhuzliLDJUsbzJloZqOdzJXDvHLSLAOQq5PWKKY"
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU4NzA1MzAsImV4cCI6MTU5NTk1NjkzMH0.WRWUirGed2zNk-49tsf9Ar3wERDjgihOCJvhddCtQuI"
       )
       .then((res) => expect(res.status).toBe(201));
   });
@@ -329,7 +375,7 @@ describe("update operators login", () => {
       })
       .set(
         "Authorization",
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU3ODMwNDYsImV4cCI6MTU5NTg2OTQ0Nn0.Z3TXKhuzliLDJUsbzJloZqOdzJXDvHLSLAOQq5PWKKY"
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU4NzA1MzAsImV4cCI6MTU5NTk1NjkzMH0.WRWUirGed2zNk-49tsf9Ar3wERDjgihOCJvhddCtQuI"
       )
       .then((res) => expect(res.status).toBe(201));
   });
@@ -345,18 +391,30 @@ describe("delete operator", () => {
   //   expect(res.statusCode).toBe(200);
   // });
   it("deletes operator", async () => {
-    const res = await supertest(server).delete("/api/ops/1");
+    const res = await supertest(server)
+      .delete("/api/ops/1")
+      .set(
+        "Authorization",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU4NzA1MzAsImV4cCI6MTU5NTk1NjkzMH0.WRWUirGed2zNk-49tsf9Ar3wERDjgihOCJvhddCtQuI"
+      );
+
+    console.log(res.body);
     expect(res.statusCode).toBe(200);
   });
 
   it("returns a JSON object", async () => {
-    const res = await supertest(server).put("/api/ops/1");
+    const res = await supertest(server).delete("/api/ops/1");
     expect(res.type).toBe("application/json");
   });
 });
 describe("delete diner", () => {
   it("deletes diner", async () => {
-    const res = await supertest(server).delete("/api/diners/4");
+    const res = await supertest(server)
+      .delete("/api/diners/4")
+      .set(
+        "Authorization",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU4NzA1MzAsImV4cCI6MTU5NTk1NjkzMH0.WRWUirGed2zNk-49tsf9Ar3wERDjgihOCJvhddCtQuI"
+      );
     expect(res.statusCode).toBe(200);
   });
   it("returns a JSON object", async () => {
@@ -366,17 +424,32 @@ describe("delete diner", () => {
 });
 describe("delete truck", () => {
   it("deletes truck", async () => {
-    const res = await supertest(server).delete("/api/trucks/7");
+    const res = await supertest(server)
+      .delete("/api/trucks/7")
+      .set(
+        "Authorization",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU4NzA1MzAsImV4cCI6MTU5NTk1NjkzMH0.WRWUirGed2zNk-49tsf9Ar3wERDjgihOCJvhddCtQuI"
+      );
     expect(res.statusCode).toBe(200);
   });
   it("returns a JSON object", async () => {
-    const res = await supertest(server).delete("/api/trucks/7");
+    const res = await supertest(server)
+      .delete("/api/trucks/7")
+      .set(
+        "Authorization",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU4NzA1MzAsImV4cCI6MTU5NTk1NjkzMH0.WRWUirGed2zNk-49tsf9Ar3wERDjgihOCJvhddCtQuI"
+      );
     expect(res.type).toBe("application/json");
   });
 });
 describe("delete menu", () => {
   it("deletes menu", async () => {
-    const res = await supertest(server).delete("/api/menus/18");
+    const res = await supertest(server)
+      .delete("/api/menus/18")
+      .set(
+        "Authorization",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInVzZXJuYW1lIjoiZGF2aWQiLCJpYXQiOjE1OTU4NzA1MzAsImV4cCI6MTU5NTk1NjkzMH0.WRWUirGed2zNk-49tsf9Ar3wERDjgihOCJvhddCtQuI"
+      );
     expect(res.statusCode).toBe(200);
   });
   it("returns a JSON object", async () => {
