@@ -340,10 +340,15 @@ describe("update operators login", () => {
 });
 // deletes
 describe("delete operator", () => {
+  // it("deletes operator", async () => {
+  //   const res = await supertest(server).delete("/api/ops/1");
+  //   expect(res.statusCode).toBe(200);
+  // });
   it("deletes operator", async () => {
     const res = await supertest(server).delete("/api/ops/1");
     expect(res.statusCode).toBe(200);
   });
+
   it("returns a JSON object", async () => {
     const res = await supertest(server).put("/api/ops/1");
     expect(res.type).toBe("application/json");

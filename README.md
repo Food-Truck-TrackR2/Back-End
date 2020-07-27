@@ -4,6 +4,10 @@ This repository is for Unit 4 Developers
 
 API endpoints you will need
 
+Deployed URL:
+
+https://food--truck-2.herokuapp.com/
+
 Registration enpoints
 **\*\*** the following endpoints are to register either a diner or operator **\*\***
 
@@ -35,7 +39,7 @@ POST /api/ops/:id/trucks": this endpoint lets you add a truck to an operator
 truck truck: {
 "truckName": a string,
 "imgOfTruck": a string up to 400 characters long,
-"customerRatings": a integer value, still working on it so i will update you when i am done with this(not required, everything else is),
+"customerRatings": a integer value, ),
 "customerRatingAvg" : an integer value,
 "currentLocation" : is a string,
 "departTime": is a string,
