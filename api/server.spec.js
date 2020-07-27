@@ -186,6 +186,7 @@ describe("Get operator", () => {
   //   const res = await supertest(server).get("/api/ops");
   //   expect(res.statusCode).toBe(200);
   // });
+
   it("returns a JSON object", async () => {
     const res = await supertest(server).get("/api/ops");
     expect(res.type).toBe("application/json");
